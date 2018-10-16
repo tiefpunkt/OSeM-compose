@@ -2,13 +2,15 @@ version: "2"
 
 services:
   mongo_:
-    image: sensebox/opensensemap-api-mongo
+    image: mongo:4.0
     volumes:
       - mongo-data:/data/db
+      - ./database-user.js:/docker-entrypoint-initdb.d/001-user.js
     environment:
-      OSEM_dbuser: mongodbOSeMUser
-      OSEM_dbuserpass: securePaSs
-    command: --auth --storageEngine wiredTiger
+      MONGO_INITDB_ROOT_USERNAME: osemadmin
+      MONGO_INITDB_ROOT_PASSWORD: SecretPass
+      MONGO_INITDB_DATABASE: osem-api-db
+    command: --storageEngine wiredTiger
     networks:
       - api-back
     restart: always
