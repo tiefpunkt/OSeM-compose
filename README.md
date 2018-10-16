@@ -58,8 +58,10 @@ You can convert the certificate files to \n delimited strings using `sed -z 's/\
 
 | key | comment | optional |
 |-----|---------|----------|
-| `OSEM_dbuser` | the database user to connect to your mongodb, should be the same in services `api`, `mongo`, `ttn-integration` and `mqtt-integration` | y |
-| `OSEM_dbuserpass` | the password for the mongodb user, should be the same in services `api`, `mongo`, `ttn-integration` and `mqtt-integration` | y |
+| `MONGO_INITDB_ROOT_USERNAME` | the database user to connect to your mongodb, should be the same in services `api`, `mongo`, `ttn-integration` and `mqtt-integration` |   |
+| `MONGO_INITDB_ROOT_PASSWORD` | the password for the mongodb user, should be the same in services `api`, `mongo`, `ttn-integration` and `mqtt-integration` |   |
+
+The user will be create in the `admin` database, so the `authsource` parameter needs to be set to `admin` in services `api`, `mongo`, `ttn-integration` and `mqtt-integration`.
 
 ## Service `mailer`
 
