@@ -5,11 +5,9 @@ services:
     image: mongo:4.0
     volumes:
       - mongo-data:/data/db
-      - ./database-user.js:/docker-entrypoint-initdb.d/001-user.js
     environment:
-      MONGO_INITDB_ROOT_USERNAME: osemadmin
-      MONGO_INITDB_ROOT_PASSWORD: SecretPass
-      MONGO_INITDB_DATABASE: osem-api-db
+      MONGO_INITDB_ROOT_USERNAME: mongodbOSeMUser
+      MONGO_INITDB_ROOT_PASSWORD: securePaSs
     command: --storageEngine wiredTiger
     networks:
       - api-back
